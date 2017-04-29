@@ -22,8 +22,6 @@ const InitialMap = withGoogleMap(props => (
 			onClick={props.onMapClick}
 		>
 			{props.markers.map(marker => (
-				
-
 				<Marker
 					{...marker}
 		        	onClick={() => props.onMarkerClick(marker)}
@@ -34,22 +32,13 @@ const InitialMap = withGoogleMap(props => (
 
 export default class GMap extends Component {
 
-	state = {
-    	markers: [{
-      		position: {
-        		lat: 37.7620435,
-        		lng: -121.9118091,
-      		},
-      		key: 'Home',
-  			defaultAnimation: 2,
-		}],
+    state = {
+      markers: [],
   	};
 
   	componentDidMount(){
   		console.log('componentDidMount');
-  		//https://mymapchat.herokuapp.com/messages/all
-  		//'X-AUTH-TOKEN', 'thisisaverysecrettoken'
-  		const url = 'https://localhost:8080/mapchat/messages/all';
+  		const url = 'https://mymapchat.herokuapp.com/messages/all';
 
   		superagent
   		.get(url)
@@ -60,12 +49,32 @@ export default class GMap extends Component {
   			if (error || !response.ok){
   				console.log("Error!");
   			}else {
-  				console.log(response.body);  				
+          var nextMarkers = [
+            ...this.state.markers            
+          ];
+
+          response.body.map((msg, i) => {
+            const marker = {
+                position: {
+                  lat: msg.location.lat,
+                  lng: msg.location.lng,
+                },
+                key: msg.id,
+                defaultAnimation: 2,
+            };
+            nextMarkers.push(marker);
+          });
+
+          console.log(nextMarkers);
+
+          this.setState({
+            markers: nextMarkers,
+          });
   			}
   		});
   	}
 
-	handleMapLoad = this.handleMapLoad.bind(this);
+    handleMapLoad = this.handleMapLoad.bind(this);
   	handleMapClick = this.handleMapClick.bind(this);
   	handleMarkerClick = this.handleMarkerClick.bind(this);
 
@@ -84,7 +93,7 @@ export default class GMap extends Component {
 		        defaultAnimation: 2,
 		        key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
       		},
-		];
+		  ];
 
 	    this.setState({
 	    	markers: nextMarkers,
@@ -110,9 +119,9 @@ export default class GMap extends Component {
 	          			<div style={{ height: '100vh', width: '100vw' }} />
 	        		}
 	        		onMapLoad={this.handleMapLoad}
-          			onMapClick={this.handleMapClick}
-          			markers={this.state.markers}
-          			onMarkerClick={this.handleMarkerClick}
+        			onMapClick={this.handleMapClick}
+        			markers={this.state.markers}
+        			onMarkerClick={this.handleMarkerClick}
 	      		/>
 	  		</div>
 	    );
