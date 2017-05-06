@@ -1,11 +1,10 @@
-import React from "react";
+import React 	from "react";
 import ReactDOM from "react-dom";
 
-
-import Layout from "./components/Layout";
+import Layout 	from "./components/Layout";
 
 const app = document.getElementById('app');
 
 ReactDOM.render(
-	<Layout></Layout>,
+	<Layout/>,
 app);

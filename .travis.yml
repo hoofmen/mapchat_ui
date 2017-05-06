@@ -1,0 +1,15 @@
+language: java
+jdk:
+- oraclejdk8
+before_install:
+- openssl aes-256-cbc -K $encrypted_96bda7d7fff5_key -iv $encrypted_96bda7d7fff5_iv
+  -in client_secret.json.enc -out client_secret.json -d
+script: mvn clean install
+before_deploy: 
+after_success: 
+after_failure: 
+deploy:
+  provider: heroku
+  api_key:
+    secure: Jrz1p4IvUXK89/TM+UNgiBGNsPyNpFg7u/ZoxBLU/xMxHk4UFCCcs2lxAphom5KwBBM/TMdIYYcUYdbNMb/k6HhUkTJtrKXkEzJ310JOML93Xdg1ggQWMECg9RsYRcOHfSGIfQuk/Zy5cxW2mf1Vu2bm8SQSV8OCmJNpldR3E0yAgs6TN/CCQtdyZ1vRqvRzP756PBGlmURdcNrSkcsUhzEPSYt8Ifa9EWpL4ptbQvQd0PguTOkXYd5GfVVBMyxuey8yumDuVCu2+wFZZmCJA4A4jBhc7e9y4Wer1CIAc7DWK3t9h43sOshLtcLSeTSxu27co8w5pJxJsTOhNzNZk8TfpHmFQApqWu5ii5iYUExzuobWpQVf/DHxiVVtMYZCyVvgUdQQqFAQ5vhGPpUPcqXM1C7ipV9LvV1PJYNqY5TftS8xyxeQp8h+q+DPE4f+lnDziboZah0d4lrWqQnzeXVEX2RIduKmTvgrLOCihvxGaMrzH+ZasIofFb4rGPkla5+iY13hH8bIxD0UntSK7xqCuvuuON7eGCfIJwiZnn2j2FSNHIuntTN2hlOA614H+DUAF4tqe1dnqI25VOzP6edzmK5CqMMR2gvgX//Z2py7nEiRYkvog6BMgTdJQwz5Tkbq3qJLNj+dD2p6gXJ8KEzKiMRyhfwc+c3g0nDFmlg=
+  app: mymapchat
