@@ -1,15 +1,22 @@
-language: java
-jdk:
-- oraclejdk8
+language: node_js
+node_js:
+- '0.10'
+- '0.12'
+- '4.2'
+- '5.0'
+env:
+  matrix:
+  - NPM_2=true
+  - NPM_3=true
 before_install:
-- openssl aes-256-cbc -K $encrypted_96bda7d7fff5_key -iv $encrypted_96bda7d7fff5_iv
-  -in client_secret.json.enc -out client_secret.json -d
-script: mvn clean install
-before_deploy: 
-after_success: 
-after_failure: 
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi
+- if [ "$NPM_3" = true ]; then npm install -g npm@3; else true; fi
+script: npm install
+
 deploy:
   provider: heroku
   api_key:
-    secure: Jrz1p4IvUXK89/TM+UNgiBGNsPyNpFg7u/ZoxBLU/xMxHk4UFCCcs2lxAphom5KwBBM/TMdIYYcUYdbNMb/k6HhUkTJtrKXkEzJ310JOML93Xdg1ggQWMECg9RsYRcOHfSGIfQuk/Zy5cxW2mf1Vu2bm8SQSV8OCmJNpldR3E0yAgs6TN/CCQtdyZ1vRqvRzP756PBGlmURdcNrSkcsUhzEPSYt8Ifa9EWpL4ptbQvQd0PguTOkXYd5GfVVBMyxuey8yumDuVCu2+wFZZmCJA4A4jBhc7e9y4Wer1CIAc7DWK3t9h43sOshLtcLSeTSxu27co8w5pJxJsTOhNzNZk8TfpHmFQApqWu5ii5iYUExzuobWpQVf/DHxiVVtMYZCyVvgUdQQqFAQ5vhGPpUPcqXM1C7ipV9LvV1PJYNqY5TftS8xyxeQp8h+q+DPE4f+lnDziboZah0d4lrWqQnzeXVEX2RIduKmTvgrLOCihvxGaMrzH+ZasIofFb4rGPkla5+iY13hH8bIxD0UntSK7xqCuvuuON7eGCfIJwiZnn2j2FSNHIuntTN2hlOA614H+DUAF4tqe1dnqI25VOzP6edzmK5CqMMR2gvgX//Z2py7nEiRYkvog6BMgTdJQwz5Tkbq3qJLNj+dD2p6gXJ8KEzKiMRyhfwc+c3g0nDFmlg=
-  app: mymapchat
+    secure: Le8UcT1kmyS9GjbuZtAils5UXWk50d/yw2SS8budVVV8xE/lzM0iF7pJF7QvU5OPk1rOGf46yX7zN7KFrN7wrXuquIqqBBnVTijN7PiPzGajUPIC6mE4Z2+IAXeplNR8I+eeYGx9o3irrVdShOtdJUCfwAfUejnEHENSWzxSLIUOC+C5wjmdH9Z+YfyI6n8qxGBO5QzVYxtcuFtzs8MRbzR9LzB4E6m89M8xi2HKaeBONFG9wtg1EYOrxpxMJywrALPb7xOsS9gXmeyd8fkcGju+czUH49a44xI3uDVxjXqN7FshVP1+aOYirYAEmhhpLKsqI0g7gF15sEUwqVESIeBVH8iF6LMWqg8MJA4DXvvwW//lmuvQSf9Nt/cLDbF1ahssm+uGGnfZFQOamYzs0Nm2qSre9hIjcSXRjSZdvdp5QCxztPqpn2UgieU/aU893b855KCy8xG/moPySuvDkgJJDfD7Vcn0QsKgeF7nKwf0q9tB13PlG8to9BXPc1XrJG2iwpaPW7cXIPrdXmupSRNl0CFmfWW8xBgH2mmOSvllEaFpvBnOM3pUX1DBa02KHvRoSuHBhVUnmT/NqMlloRL24rnoh0ThiSPOb/Yw0iEa+8SlXYlJ6uP8KMVqToctS0fSm7NQNT2vmHH6zOH5buvyHoznW9mokSzXcVIGzGQ=
+  app: mymapchatui
