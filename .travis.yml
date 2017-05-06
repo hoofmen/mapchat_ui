@@ -5,8 +5,8 @@ env:
   matrix:
   - NPM_2=true
 before_install:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
+#- export DISPLAY=:99.0
+#- sh -e /etc/init.d/xvfb start
 - if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi
 script: npm install
 
