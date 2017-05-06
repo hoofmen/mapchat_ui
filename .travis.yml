@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '4.3'
+env:
+  matrix:
+  - NPM_2=true
+before_install:
+#- export DISPLAY=:99.0
+#- sh -e /etc/init.d/xvfb start
+- if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi
+script: npm install
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: Le8UcT1kmyS9GjbuZtAils5UXWk50d/yw2SS8budVVV8xE/lzM0iF7pJF7QvU5OPk1rOGf46yX7zN7KFrN7wrXuquIqqBBnVTijN7PiPzGajUPIC6mE4Z2+IAXeplNR8I+eeYGx9o3irrVdShOtdJUCfwAfUejnEHENSWzxSLIUOC+C5wjmdH9Z+YfyI6n8qxGBO5QzVYxtcuFtzs8MRbzR9LzB4E6m89M8xi2HKaeBONFG9wtg1EYOrxpxMJywrALPb7xOsS9gXmeyd8fkcGju+czUH49a44xI3uDVxjXqN7FshVP1+aOYirYAEmhhpLKsqI0g7gF15sEUwqVESIeBVH8iF6LMWqg8MJA4DXvvwW//lmuvQSf9Nt/cLDbF1ahssm+uGGnfZFQOamYzs0Nm2qSre9hIjcSXRjSZdvdp5QCxztPqpn2UgieU/aU893b855KCy8xG/moPySuvDkgJJDfD7Vcn0QsKgeF7nKwf0q9tB13PlG8to9BXPc1XrJG2iwpaPW7cXIPrdXmupSRNl0CFmfWW8xBgH2mmOSvllEaFpvBnOM3pUX1DBa02KHvRoSuHBhVUnmT/NqMlloRL24rnoh0ThiSPOb/Yw0iEa+8SlXYlJ6uP8KMVqToctS0fSm7NQNT2vmHH6zOH5buvyHoznW9mokSzXcVIGzGQ=
+  app: mymapchatui

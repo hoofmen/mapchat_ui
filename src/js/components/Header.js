@@ -7,7 +7,7 @@ export default class Header extends React.Component {
       <header>
         <div class="row">
           <div class="col-lg-12">
-            <h1>Map Test</h1>
+            <h1>Map Chat (Test)</h1>
           </div>
         </div>
       </header>
