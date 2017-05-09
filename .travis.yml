@@ -1,13 +1,10 @@
 language: node_js
 node_js:
-- '4.3'
-env:
-  matrix:
-  - NPM_2=true
+  - '4.3'
+env: 
+  - NODE_ENV=production
 before_install:
-#- export DISPLAY=:99.0
-#- sh -e /etc/init.d/xvfb start
-- if [ "$NPM_2" = true ]; then npm install -g npm@2; else true; fi
+install: npm install  
 script: npm run build
 
 deploy:
