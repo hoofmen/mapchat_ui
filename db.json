@@ -1,0 +1,68 @@
+{
+	"mapmessages": 
+	[
+	  {
+	    "id": "c24d05ad-3588-24e4-41a7-17aa50a18795",
+	    "location": {
+	      "lat": 37.7648235,
+	      "lng": -121.905671
+	    },
+	    "message": "Any body there?",
+	    "duration": 4
+	  },
+	  {
+	    "id": "34407e73-8a5a-370e-4cec-7789832fe6ba",
+	    "location": {
+	      "lat": 37.764086,
+	      "lng": -121.90389
+	    },
+	    "message": "LOL, that's funny",
+	    "duration": 4
+	  },
+	  {
+	    "id": "1d4f35e5-ded5-fd9b-ed15-867d35ce21bf",
+	    "location": {
+	      "lat": 37.7634744,
+	      "lng": -121.9046315
+	    },
+	    "message": "Walgreens has very cheap stuff",
+	    "duration": 4
+	  },
+	  {
+	    "id": "e74a2044-023e-d298-af1f-b96421ef2fad",
+	    "location": {
+	      "lat": 52.531261,
+	      "lng": 13.405838
+	    },
+	    "message": "Berlin",
+	    "duration": 4
+	  },
+	  {
+	    "id": "00430803-10f5-ab6c-880f-71d8c25b82b8",
+	    "location": {
+	      "lat": 50.960157,
+	      "lng": 6.921272
+	    },
+	    "message": "Cologne",
+	    "duration": 4
+	  },
+	  {
+	    "id": "2846612e-952b-7a63-4b50-459d0ef088b6",
+	    "location": {
+	      "lat": 51.224088,
+	      "lng": 6.810036
+	    },
+	    "message": "Dusseldorf",
+	    "duration": 4
+	  },
+	  {
+	    "id": "f8696ffa-baea-453d-b746-efd7d021c37c",
+	    "location": {
+	      "lat": 37.7286502,
+	      "lng": -121.9255963
+	    },
+	    "message": "Alamo Creek Park",
+	    "duration": 4
+	  }
+	]
+}
