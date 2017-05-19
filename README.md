@@ -14,5 +14,38 @@ General idea is to post and display short messages in a Map.
 * Superagent 3.5.2
 * Webpack 2.4.1
 
-### Deployment
+### How to develop
+
+Install dependencies
+```sh
+	npm install
+```
+
+Run the json-server (for Mocked API responses)
+```sh
+	npm run api
+```
+
+This will respond mocked map-messages if you hit the following URL http://localhost:3004/mapmessages
+The mocked responses are defined in file db.json
+
+
+Run the server in DEV mode, this will hot reload any code changes you make
+```sh
+	npm run dev
+```
+
+Then go to http://localhost:8090
+
+
+### How to build/run for PROD
+```sh 
+	npm install
+	npm run build
+	npm run start
+```
+
+Then go to http://localhost:8090
+
+### Live Demo
 https://mymapchatui.herokuapp.com
